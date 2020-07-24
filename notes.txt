@@ -1,0 +1,6 @@
+1. need to mention how to load up virtual env... or maybe just list everything that must be installed
+
+"py -m venv" will create virtual environment called env
+"env\scripts\activate" will start it up
+
+2. "pip install flask"
