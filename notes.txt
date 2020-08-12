@@ -7,4 +7,8 @@ https://www.youtube.com/watch?v=QjtW-wnXlUY
 
 2. "pip install flask"
 
+3. "pip install flask-wtf"
+
 3. "set FLASK_APP=app.py"
+
+"flask run" to host
