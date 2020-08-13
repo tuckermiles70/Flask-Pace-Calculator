@@ -4,18 +4,45 @@ from form import ComputeForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
 
-def calculatePace():
+def calculatePace(result):
     # pace is distance / time
     print('We\'re calculating pace')
-    pass
-def calculateDistance():
+
+    totalseconds = 0
+    totalseconds += int(result['hours']) * 3600
+    totalseconds += int(result['minutes']) * 60
+    totalseconds += int(result['seconds'])
+
+    distance = float(result['distance'])
+
+    print('Distance: {}\nTime: {}\n'.format(distance, totalseconds))
+    print('Pace is {} seconds per mile'.format(totalseconds / distance))
+    
+def calculateDistance(result):
     # distance is time / pace
     print('We\'re calculating distance')
-    pass
-def calculateTime():
+    
+    totalseconds = 0
+    totalseconds += int(result['hours']) * 3600
+    totalseconds += int(result['minutes']) * 60
+    totalseconds += int(result['seconds'])
+
+    pace = float(result['pace'])
+
+    print('Time: {}\nPace: {}\n'.format(totalseconds, pace))
+    print('Distance is {} miles'.format(totalseconds / pace))
+
+def calculateTime(result):
     # time = distance * pace
     print('We\'re calculating time')
-    pass
+
+    distance = float(result['distance'])
+
+    pace = float(result['pace'])
+
+    print('Distance: {}\nPace: {}\n'.format(distance, pace))
+    print('Time is {} seconds'.format(distance * pace))
+
 
 # Base url
 @app.route('/', methods=['GET', 'POST'])
@@ -31,11 +58,11 @@ def index():
 
 
         if result['distance'] != '' and givenTime and result['pace'] == '':
-            calculatePace()
+            calculatePace(result)
         elif result['pace'] != '' and givenTime and result['distance'] == '':
-            calculateDistance()
+            calculateDistance(result)
         elif result['distance'] != '' and result['pace'] != '' and not givenTime:
-            calculateTime()
+            calculateTime(result)
         else:
             # error and die
             # raise ValueError('2 Fields must be completed and 1 must be blank!')
