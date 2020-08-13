@@ -3,8 +3,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 
-class SignUpForm(FlaskForm):
+class ComputeForm(FlaskForm):
     distance = StringField('Distance')
-    time = StringField('time')
-    pace = StringField('pace')
-    submit - SubmitField('Submit')
+    time = StringField('Time')
+    pace = StringField('Pace')
+    submit = SubmitField('submit')
