@@ -6,7 +6,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 
 class ComputeForm(FlaskForm):
+    hours = StringField('Hours')
+    minutes = StringField('Minutes')
+    seconds = StringField('Seconds')
+
     distance = StringField('Distance')
-    time = StringField('Time')
+
     pace = StringField('Pace')
+    
     submit = SubmitField('submit')
