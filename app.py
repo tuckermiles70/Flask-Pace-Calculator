@@ -4,45 +4,43 @@ from form import ComputeForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
 
+def calculatePace():
+    # pace is distance / time
+    print('We\'re calculating pace')
+    pass
+def calculateDistance():
+    # distance is time / pace
+    print('We\'re calculating distance')
+    pass
+def calculateTime():
+    # time = distance * pace
+    print('We\'re calculating time')
+    pass
+
 # Base url
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # return render_template('index.html')
     form = ComputeForm()
     if form.is_submitted():
         result = request.form # import request
 
-
-        # Check which one of the three boxes is blank.
-        # Then error check to ensure other two boxes have values
-        # if result['distance'] == '':
-        #     print('We\'re calculating distance')
-        #     if result['time'] != '' and result['pace'] != '':
-        #         # then we're good so continue
-        #         print('ready to compute')
-        #     else:
-        #         print('2 fields must be filled in!')
+        if result['hours'] != '' and result['minutes'] != '' and result['seconds'] != '':
+            givenTime = True
+        else:
+            givenTime = False
 
 
-        # elif result['time'] == '':
-        #     print('We\'re calculating time')
-        #     if result['distance'] != '' and result['pace'] != '':
-        #         # then we're good so continue
-        #         print('ready to compute')
-        #     else:
-        #         print('2 fields must be filled in!')
+        if result['distance'] != '' and givenTime and result['pace'] == '':
+            calculatePace()
+        elif result['pace'] != '' and givenTime and result['distance'] == '':
+            calculateDistance()
+        elif result['distance'] != '' and result['pace'] != '' and not givenTime:
+            calculateTime()
+        else:
+            # error and die
+            # raise ValueError('2 Fields must be completed and 1 must be blank!')
+            print('2 Fields must be completed and 1 must be blank!')
 
-        # elif result['pace'] == '':
-        #     print('We\'re calculating pace')
-        #     if result['distance'] != '' and result['time'] != '':
-        #         # then we're good so continue
-        #         print('ready to compute')
-        #     else:
-        #         print('2 fields must be filled in!')
-
-        # else:
-        #     print('One field must be left blank!')
-        
     return render_template('index.html', form=form)
 
 if __name__ == "__main__":
