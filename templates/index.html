@@ -14,7 +14,7 @@
 
 <body>
 
-    <!-- <div class="col-md-6 offset-md-3"> -->
+    <div class="col-md-6 offset-md-3">
 
     <form name="form1" action="{{ url_for('handle_data') }}" method="post">
 
@@ -39,23 +39,16 @@
         <!-- <div class="form-group">
             <label for="pace">Pace</label>
             <input name="pace" class="form-control" id="pace" placeholder="Pace">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button> -->
+        </div> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
 
         <p>
-            <div> Pace is {{ pace }} seconds per mile </div>
+            <div> Pace is {{ pace }} minutes per mile </div>
         </p>
 
     </form>
 
-    <table>
-        <tr>
-            <th>{{ key }}</th>
-            <td> {{ value }}</td>
-        </tr>
-    </table>
-
-    <!-- </div> -->
+    </div>
 
 
     <!-- Bootstrap JS -->
