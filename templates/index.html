@@ -16,30 +16,31 @@
 
     <!-- <div class="col-md-6 offset-md-3"> -->
 
-        <form action="" method="post">
-            <p>
-                {{form.hours.label}} <br>
-                {{form.hours(size=30)}}
-            </p>
-            <p>
-                {{form.minutes.label}} <br>
-                {{form.minutes(size=30)}}
-            </p>
-            <p>
-                {{form.seconds.label}} <br>
-                {{form.seconds(size=30)}}
-            </p>
-            <p>
-                {{form.distance.label}} <br>
-                {{form.distance(size=30)}}
-            </p>
-            <p>
-                {{form.pace.label}} <br>
-                {{form.pace(size=30)}}
-            </p>
-            <p>{{form.submit()}}</p>
+    <form action="{{ url_for('handle_data') }}" method="post">
 
-        </form>
+        <div class="form-group">
+            <label for="distance">Distance</label>
+            <input name="distance" class="form-control" id="distance" placeholder="Distance">
+        </div>
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input name="time" class="form-control" id="time" placeholder="Time">
+        </div>
+        <div class="form-group">
+            <label for="pace">Pace</label>
+            <input name="pace" class="form-control" id="pace" placeholder="Pace">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+
+    <table>
+        <tr>
+            <th>{{ key }}</th>
+            <td> {{ value }}</td>
+        </tr>
+    </table>
 
     <!-- </div> -->
 
