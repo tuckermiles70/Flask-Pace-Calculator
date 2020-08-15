@@ -9,62 +9,116 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+    <!-- Just sets background color -->
+    <style type="text/css">
+        body {
+            background: #ffd6a5 !important;
+        }
+    </style>
+
     <title>Document</title>
 </head>
 
 <body>
 
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-6 offset-md-3 mt-2">
 
-    <form name="form1" action="{{ url_for('handle_data') }}" method="post">
+        <form name="form1" action="{{ url_for('handle_data') }}" method="post">
 
-        <div class="form-group">
-            <label for="hours">Hours</label>
-            <input name="hours" class="form-control" id="hours" placeholder="Hours">
-        </div>
-        <div class="form-group">
-            <label for="minutes">Minutes</label>
-            <input name="minutes" class="form-control" id="minutes" placeholder="Minutes">
-        </div>
-        <div class="form-group">
-            <label for="seconds">Seconds</label>
-            <input name="seconds" class="form-control" id="seconds" placeholder="Seconds">
-        </div>
+            <div class="row">
 
-        <div class="form-group">
-            <label for="distance">Distance</label>
-            <input name="distance" class="form-control" id="distance" placeholder="Distance">
-        </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="hours">Hours</label>
+                        <input name="hours" class="form-control" id="hours" placeholder="Hours">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="minutes">Minutes</label>
+                        <input name="minutes" class="form-control" id="minutes" placeholder="Minutes">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="seconds">Seconds</label>
+                        <input name="seconds" class="form-control" id="seconds" placeholder="Seconds">
+                    </div>
+                </div>
 
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
-            <label class="custom-control-label" for="customRadioInline1">Miles</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline2">Kilometers</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline3">Meters</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline4">Yards</label>
-          </div>
+            </div>
 
-        <!-- <div class="form-group">
+            <label for="distance">Distance</label> <!-- pulled up here because dropdown wanted to line up with label -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <!-- <label for="distance">Distance</label> ^^MOVED UP^^ -->
+                        <input name="distance" class="form-control" id="distance" placeholder="Distance">
+                    </div>
+                </div>
+
+                <div class="col mt-20">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Or pick an event
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Marathon</a>
+                            <a class="dropdown-item" href="#">Half Marathon</a>
+                            <a class="dropdown-item" href="#">1K</a>
+                            <a class="dropdown-item" href="#">5K</a>
+                            <a class="dropdown-item" href="#">10K</a>
+                            <a class="dropdown-item" href="#">1 Mile</a>
+                            <a class="dropdown-item" href="#">5 Miles</a>
+                            <a class="dropdown-item" href="#">10 Miles</a>
+                            <a class="dropdown-item" href="#">800 Meters</a>
+                            <a class="dropdown-item" href="#">1500 Meters</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"
+                    checked>
+                <label class="custom-control-label" for="customRadioInline1">Miles</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Kilometers</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline3">Meters</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline4">Yards</label>
+            </div>
+
+
+
+            <!-- <div class="form-group">
             <label for="pace">Pace</label>
             <input name="pace" class="form-control" id="pace" placeholder="Pace">
         </div> -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
-        <p>
+            <p>
             <div> Pace is {{ pace }} minutes per mile </div>
-        </p>
+            </p>
 
-    </form>
+        </form>
 
+    </div>
+
+    <!-- Footer with my name -->
+    <div id="footer">
+        <div class="container text-center">
+            <p class="text-muted credit" style="color:#fff">Tucker Miles 2020</p>
+        </div>
     </div>
 
 
